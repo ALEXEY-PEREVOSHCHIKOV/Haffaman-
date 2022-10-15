@@ -6,23 +6,23 @@ function Node (letter, freq, used, father, code) {
 	this.code = code;
 };
 
-let Stroka= 'abrakadabra';
+let Stroka= 'aaaaaaaarrrrwwqt';
 let alphabet = new Array ();
 let tree = new Array ();
 
 
 for(i = 0; i < Stroka.length; i++){
-    if (Stroka.charAt(i) in alphabet){
-        alphabet[Stroka.charAt(i)]++;
+    if (Stroka[i] in alphabet){
+        alphabet[Stroka[i]]++;
     }
     else{
-        alphabet[Stroka.charAt(i)] = 1;
+        alphabet[Stroka[i]] = 1;
     }
 }
 
 
     for (i in alphabet){
-        let n = new Node(i, alphabet[i], 0, null, '');
+        let n = new Node(i, alphabet[i], 0, null, '0');
         tree.push(n); }
 let treeLength = tree.length;
 
@@ -39,6 +39,7 @@ for (let i = 0; i < treeLength - 1; i++) {
             mind2 = j;
             minFreq2 = tree[j].freq;
         } else if (tree[j].used == 0 && tree[j].freq <= firstMinFreq) {
+		  firstMinFreq = tree[j].freq;
             mind = j;
         }
     }
